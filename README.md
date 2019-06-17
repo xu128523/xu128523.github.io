@@ -1,4 +1,4 @@
-# hello-world-vue3
+# shedule
 
 ## Project setup
 ```
