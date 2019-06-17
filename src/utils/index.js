@@ -4,7 +4,7 @@ function toDate(obj) {
   }
   if (typeof obj !== 'object') {
     if (('' + obj).length === 10) obj = parseInt(obj) * 1000
-    if (typeof obj === 'string') obj = obj.replace(/\-/g, '/') // 苹果手机日期转换兼容
+    if (typeof obj === 'string') obj = obj.replace(/-/g, '/') // 苹果手机日期转换兼容
     obj = new Date(obj)
   }
   return obj
@@ -17,7 +17,7 @@ export function formatDate(date0, fmt) {
   if (!date0) return ''
   if (typeof date0 === 'string') {
     date0 = date0.replace(/(:\d+)\.\d+$/, '$1'); // IE 不能转换2017-12-28 10:43:02.0
-    date0 = date0.replace(/\-/g, '/') // 苹果手机日期转换兼容
+    date0 = date0.replace(/-/g, '/') // 苹果手机日期转换兼容
   }
   let date = new Date(date0);
   if (isNaN(date.getDay())) return date0 || ''
