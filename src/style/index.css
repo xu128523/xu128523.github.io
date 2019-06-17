@@ -1,0 +1,40 @@
+html {
+  height: 100%;
+  box-sizing: border-box;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-family: 'Microsoft YaHei', 'Arial', 'sans-serif', 'Helvetica Neue', 'Helvetica', 'PingFang SC', 'Hiragino Sans GB';
+}
+
+div, section, header, footer, aside, nav {
+  box-sizing: border-box;
+  -webkit-user-select:none;
+  -moz-user-select:none;
+  -ms-user-select:none;
+  user-select:none;
+}
+
+body {
+  height: 100%;
+  margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6, p, ul, li {
+  margin: 0;
+}
+
+ul, li {
+  list-style: none;
+}
+
+a {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  -webkit-tap-highlight-color: transparent;
+}
