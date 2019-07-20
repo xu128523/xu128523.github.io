@@ -195,6 +195,11 @@ export default {
           tempArr.push(arr[p - 1])
           if (p % 7 === 0) {
             let item = tempArr
+            // if (!this.currCalendar.length) {
+            //   this.currCalendar.push(item)
+            // } else if (this.currCalendar.length && p !== 7) {
+            //   this.currCalendar.push(item)
+            // }
             this.currCalendar.push(item)
             tempArr = []
           }

@@ -6,6 +6,40 @@
  * 4：夜班（通宵）
  * 5: 休息
  */
+const _INIT = [
+    { date: 1, status: 0 },
+    { date: 2, status: 0 },
+    { date: 3, status: 0 },
+    { date: 4, status: 0 },
+    { date: 5, status: 0 },
+    { date: 6, status: 0 },
+    { date: 7, status: 0 },
+    { date: 8, status: 0 },
+    { date: 9, status: 0 },
+    { date: 10, status: 0 },
+    { date: 11, status: 0 },
+    { date: 12, status: 0 },
+    { date: 13, status: 0 },
+    { date: 14, status: 0 },
+    { date: 15, status: 0 },
+    { date: 16, status: 0 },
+    { date: 17, status: 0 },
+    { date: 18, status: 0 },
+    { date: 19, status: 0 },
+    { date: 20, status: 0 },
+    { date: 21, status: 0 },
+    { date: 22, status: 0 },
+    { date: 23, status: 0 },
+    { date: 24, status: 0 },
+    { date: 25, status: 0 },
+    { date: 26, status: 0 },
+    { date: 27, status: 0 },
+    { date: 28, status: 0 },
+    { date: 29, status: 0 },
+    { date: 30, status: 0 },
+    { date: 31, status: 0 }
+]
+
 const _YEAR_2019_MONTH_6 = [
   { date: 1, status: 1 },
   { date: 2, status: 1 },
@@ -60,6 +94,40 @@ const _YEAR_2019_MONTH_7 = [
   { date: 18, status: 1 },
   { date: 19, status: 1 },
   { date: 20, status: 1 },
+  { date: 21, status: 1 },
+  { date: 22, status: 5 },
+  { date: 23, status: 1 },
+  { date: 24, status: 1 },
+  { date: 25, status: 2 },
+  { date: 26, status: 2 },
+  { date: 27, status: 1 },
+  { date: 28, status: 1 },
+  { date: 29, status: 5 },
+  { date: 30, status: 5 },
+  { date: 31, status: 3 }
+]
+
+const _YEAR_2019_MONTH_8 = [
+  { date: 1, status: 3 },
+  { date: 2, status: 3 },
+  { date: 3, status: 4 },
+  { date: 4, status: 4 },
+  { date: 5, status: 5 },
+  { date: 6, status: 2 },
+  { date: 7, status: 2 },
+  { date: 8, status: 2 },
+  { date: 9, status: 4 },
+  { date: 10, status: 4 },
+  { date: 11, status: 5 },
+  { date: 12, status: 5 },
+  { date: 13, status: 1 },
+  { date: 14, status: 1 },
+  { date: 15, status: 3 },
+  { date: 16, status: 3 },
+  { date: 17, status: 4 },
+  { date: 18, status: 4 },
+  { date: 19, status: 5 },
+  { date: 20, status: 2 },
   { date: 21, status: 0 },
   { date: 22, status: 0 },
   { date: 23, status: 0 },
@@ -69,12 +137,15 @@ const _YEAR_2019_MONTH_7 = [
   { date: 27, status: 0 },
   { date: 28, status: 0 },
   { date: 29, status: 0 },
-  { date: 30, status: 0 }
+  { date: 30, status: 0 },
+  { date: 31, status: 0 }
 ]
 
 export default {
+  'init': _INIT,
   '2019': {
     '6': _YEAR_2019_MONTH_6,
-    '7': _YEAR_2019_MONTH_7
+    '7': _YEAR_2019_MONTH_7,
+    '8': _YEAR_2019_MONTH_8,
   }
 }
