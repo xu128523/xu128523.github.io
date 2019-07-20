@@ -27,6 +27,14 @@
                         <div class="calendar-area">
                             <span class="calendar-date">{{subItem.value}}</span>
                             <!-- <span class="calendar-lunarday">{{subItem.lunarDay}}</span> -->
+                            <span class="calendar-lunarday"
+                                :class="{
+                                  morning: subItem.shedule === 1,
+                                  afternoon: subItem.shedule === 2,
+                                  evening: subItem.shedule === 3,
+                                  overnight: subItem.shedule === 4,
+                                  rest: subItem.shedule === 5
+                                }">{{subItem.shedule | transText}}</span>
                         </div>
                       </td>
                 </tr>
@@ -35,8 +43,9 @@
     </div>
 </template>
 <script>
-import CalendarMixin from './calendar-mixin.js'
+import CalendarMixin from './calendar-mixin'
 import { formatDate } from '../../utils'
+import StaticSheduleData from './static-shedule'
 
 export default {
   mixins: [CalendarMixin],
@@ -133,7 +142,9 @@ export default {
       clearTimeout(this.timer)
       this.timer = setTimeout(() => {
         this.firstDay = this.getFirstDay(this.curYear, this.curMonth)
-
+        let currentPrevMonth = StaticSheduleData[this.curYear][this.curMonth - 1]
+        let currentMonth = StaticSheduleData[this.curYear][this.curMonth]
+        let currentNextMonth = StaticSheduleData[this.curYear][this.curMonth + 1]
         let arr = []
         this.monthDay = this.getMonth(this.curMonth)
         // 当月第一天前的日期
@@ -145,6 +156,7 @@ export default {
           item.isNextMonth = false
           item.value = prevMonth - i
           // item.lunarDay = this.getLunarDay(this.curYear, this.curMonth - 1, prevMonth - i)
+          item.shedule = (currentPrevMonth && currentPrevMonth[i] && currentPrevMonth[i].status) || 0
           arr.unshift(item)
         }
         // 当月天数
@@ -156,6 +168,7 @@ export default {
           item.value = n
           this.curDay === n ? item.isCurrDay = true : item.isCurrDay = false
           // item.lunarDay = this.getLunarDay(this.curYear, this.curMonth, n)
+          item.shedule = (currentMonth && currentMonth[n - 1] && currentMonth[n - 1].status) || 0
           arr.push(item)
         }
 
@@ -169,6 +182,7 @@ export default {
             item.isNextMonth = true
             item.value = next
             // item.lunarDay = this.getLunarDay(this.curYear, this.curMonth + 1, next)
+            item.shedule = (currentNextMonth && currentNextMonth[m - 1] && currentNextMonth[m - 1].status) || 0
             arr.push(item)
             next += 1
           }
@@ -208,6 +222,7 @@ export default {
           this.curMonth -= 1
         }
         this.curDay = item.value
+        this.timeText = formatDate(`${this.curYear}-${this.curMonth}-${this.curDay}`, 'yyyy年MM月dd日')
         this.getCalendar()
       } else if (item.isNextMonth) {
         if (this.curMonth + 1 > 12) {
@@ -217,8 +232,24 @@ export default {
           this.curMonth += 1
         }
         this.curDay = item.value
+        this.timeText = formatDate(`${this.curYear}-${this.curMonth}-${this.curDay}`, 'yyyy年MM月dd日')
         this.getCalendar()
       }
+    }
+  },
+  filters: {
+    transText(v) {
+      let name = ''
+      switch (v) {
+        case 1: name = '早'; break;
+        case 2: name = '中'; break;
+        case 3: name = '晚'; break;
+        case 4: name = '夜'; break;
+        case 5: name = '休'; break;
+        default: name = '-'; break;
+      }
+
+      return name;
     }
   }
 }
@@ -289,4 +320,9 @@ export default {
   // .calendar-area {
   //     height: 52px;
   // }
+  .morning { color: #24cdef; }
+  .afternoon { color: #025df7; }
+  .evening { color: #51d023; }
+  .overnight { color: #f16eba; }
+  .rest { color: #ff0000; }
 </style>
